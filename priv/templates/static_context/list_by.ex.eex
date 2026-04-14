@@ -1,0 +1,11 @@
+  @doc """
+  Returns all `<%= inspect(struct) %>` entries matching `clauses`.
+
+  Raises `ArgumentError` for unknown keys.
+  """
+  def list_by(clauses) when is_list(clauses) do
+    StaticContext.Validate.validate_clauses!(<%= inspect(struct) %>, clauses)
+    Enum.filter(entries(), fn entry ->
+      Enum.all?(clauses, fn {key, value} -> Map.get(entry, key) == value end)
+    end)
+  end

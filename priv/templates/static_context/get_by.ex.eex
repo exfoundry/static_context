@@ -1,0 +1,11 @@
+  @doc """
+  Fetches the first `<%= inspect(struct) %>` entry matching `clauses`. Returns `nil` if not found.
+
+  Raises `ArgumentError` for unknown keys.
+  """
+  def get_by(clauses) when is_list(clauses) do
+    StaticContext.Validate.validate_clauses!(<%= inspect(struct) %>, clauses)
+    Enum.find(entries(), fn entry ->
+      Enum.all?(clauses, fn {key, value} -> Map.get(entry, key) == value end)
+    end)
+  end

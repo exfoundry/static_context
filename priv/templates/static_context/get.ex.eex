@@ -1,0 +1,8 @@
+  @doc """
+  Fetches a single `<%= inspect(struct) %>` by string `id`. Returns `nil` if not found.
+
+  Raises `FunctionClauseError` if `id` is not a binary.
+  """
+  def get(id) when is_binary(id) do
+    Enum.find(entries(), &(&1.id == id))
+  end

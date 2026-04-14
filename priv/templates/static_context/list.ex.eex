@@ -1,0 +1,6 @@
+  @doc """
+  Returns all `<%= inspect(struct) %>` entries.
+  """
+  def list do
+    entries()
+  end

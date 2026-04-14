@@ -1,0 +1,10 @@
+  @doc """
+  Returns all `<%= inspect(struct) %>` entries belonging to the given association.
+
+  The foreign key is derived from the association name by appending `_id`.
+  For example, `list_for(:category, "news")` filters by `:category_id`.
+  """
+  def list_for(assoc_atom, parent_id) when is_atom(assoc_atom) do
+    foreign_key = :"#{assoc_atom}_id"
+    Enum.filter(entries(), fn entry -> Map.get(entry, foreign_key) == parent_id end)
+  end

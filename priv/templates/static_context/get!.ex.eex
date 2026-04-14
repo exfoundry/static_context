@@ -1,0 +1,10 @@
+  @doc """
+  Fetches a single `<%= inspect(struct) %>` by string `id`.
+  Raises `ArgumentError` if not found, `FunctionClauseError` if `id` is not a binary.
+  """
+  def get!(id) when is_binary(id) do
+    case Enum.find(entries(), &(&1.id == id)) do
+      nil -> raise ArgumentError, "No #{__MODULE__} entry found with id: #{inspect(id)}"
+      entry -> entry
+    end
+  end
