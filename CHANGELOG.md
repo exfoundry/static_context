@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.1.1] - 2026-04-17
+
+### Added
+- `usage-rules.md` — ships with the hex package so tools like `usage_rules`
+  and memex `deps` sources can surface it to AI agents.
+
 ## [0.1.0] - 2026-04-13
 
 ### Added
