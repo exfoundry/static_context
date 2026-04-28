@@ -25,7 +25,7 @@ defmodule StaticContext.Schema do
   Expands to:
 
       field :category_id, :string
-      field :category, StaticContext.Type, module: Categories, source: :category_id
+      field :category, StaticContext.Type, module: Categories, source: :category_id, writable: :never
 
   """
   defmacro static_belongs_to(name, module) do
@@ -36,7 +36,8 @@ defmodule StaticContext.Schema do
 
       field(unquote(name), StaticContext.Type,
         module: unquote(module),
-        source: unquote(id_field)
+        source: unquote(id_field),
+        writable: :never
       )
     end
   end

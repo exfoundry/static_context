@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.0] - 2026-04-27
+
+### Changed
+- **Breaking:** `static_belongs_to` now adds `writable: :never` to the struct field. The `_id` field remains the sole write path; the struct field is load-only. This fixes a duplicate-column error on `Repo.insert!` when both fields are set (e.g. via ExMachina lazy resolvers), but breaks any code that wrote the struct field directly via changeset or `struct!/2` and expected it to persist.
+
 ## [0.1.1] - 2026-04-17
 
 ### Added
