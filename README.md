@@ -96,7 +96,7 @@ This expands to:
 
 ```elixir
 field :category_id, :string
-field :category, StaticContext.Type, module: MyApp.Categories, source: :category_id
+field :category, StaticContext.Type, module: MyApp.Categories, source: :category_id, writable: :never
 ```
 
 Use `category_id` in changesets and forms. The virtual `category` field is

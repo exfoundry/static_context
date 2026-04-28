@@ -79,8 +79,9 @@ Expands to:
 
 - `field :mine_state_id, :string` — **the real DB column**. Cast this in
   changesets, validate it, use it in forms.
-- `field :mine_state, StaticContext.Type, ...` — virtual, read-only.
-  Auto-resolved on DB load by calling `MyApp.MineStates.get!/1`.
+- `field :mine_state, StaticContext.Type, ...` — virtual, load-only
+  (`writable: :never`). Auto-resolved on DB load by calling
+  `MyApp.MineStates.get!/1`.
 
 ## Do
 
@@ -100,6 +101,9 @@ Expands to:
   Keyword list: `list_by(name: "X")`.
 - **Don't expect OR semantics** — `list_by(a: 1, b: 2)` filters where
   both match. For OR, call twice and merge.
+- **Don't cast or write the struct field directly** — `cast(attrs, [:mine_state])`
+  or `%Mine{mine_state: %MineState{...}} |> Repo.insert!()` is silently
+  dropped (`writable: :never`). Only the `_id` field persists.
 - **Don't preload `static_belongs_to` via `Repo.preload` or `preload:`**
   — it is NOT an Ecto association. Silently does nothing or raises.
   Resolve by calling the static context directly: `MyApp.MineStates.get(record.mine_state_id)`.

@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.2.1] - 2026-04-27
+
+### Docs
+- README: `static_belongs_to` expansion now reflects the `writable: :never` option.
+- `usage-rules.md`: note that the struct field is load-only and warn against casting or writing it directly.
+
 ## [0.2.0] - 2026-04-27
 
 ### Changed
