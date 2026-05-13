@@ -1,7 +1,7 @@
 defmodule StaticContext.MixProject do
   use Mix.Project
 
-  @version "0.2.1"
+  @version "0.2.2"
   @source_url "https://github.com/exfoundry/static_context"
 
   def project do
@@ -55,6 +55,7 @@ defmodule StaticContext.MixProject do
   defp deps do
     [
       {:ecto, "~> 3.5"},
+      {:igniter, "~> 0.8", optional: true},
       {:ecto_sqlite3, "~> 0.22", only: :test},
       {:ex_doc, "~> 0.34", only: :dev, runtime: false}
     ]

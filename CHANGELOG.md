@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.2] - 2026-05-13
+
+### Added
+- `mix static_context.install` — Igniter-powered installer that adds static_context
+  to `.formatter.exs` automatically. Run via `mix igniter.install static_context`
+  or directly with `mix static_context.install`.
+
 ## [0.2.1] - 2026-04-27
 
 ### Docs

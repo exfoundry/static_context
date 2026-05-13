@@ -17,8 +17,14 @@ query conventions.
 
 ```elixir
 def deps do
-  [{:static_context, "~> 0.1"}]
+  [{:static_context, "~> 0.2"}]
 end
+```
+
+With [Igniter](https://hex.pm/packages/igniter), the installer wires up `.formatter.exs` automatically:
+
+```sh
+mix igniter.install static_context
 ```
 
 ## Usage
